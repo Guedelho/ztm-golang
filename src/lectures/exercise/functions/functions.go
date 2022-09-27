@@ -17,8 +17,43 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
+
+func greet(name string) {
+	fmt.Println("Hello", name)
+}
+
+func getMessage() string {
+	return "Hello Message"
+}
+
+func add(x, y, z int) int {
+	return x + y + z
+}
+
+func getNumber() int {
+	return 42
+}
+
+func getNumbers() (int, int) {
+	return 4, 2
+}
 
 func main() {
+	name := "Mateus"
+	greet(name)
 
+	message := getMessage()
+	fmt.Println(message)
+
+	fortyTwo := add(10, 30, 2)
+	fmt.Println(fortyTwo)
+
+	luckNumber := getNumber()
+	x, y := getNumbers()
+
+	finalNumber := add(luckNumber, x, y)
+	fmt.Println(finalNumber)
 }
