@@ -18,6 +18,30 @@ package main
 
 import "fmt"
 
-func main() {
+const (
+	Active   = true
+	Inactive = false
+)
 
+type SecurityTag struct {
+	status bool
+}
+
+func changeTagStatus(securityTag *SecurityTag, status bool) {
+	securityTag.status = status
+}
+
+func checkout(tagList []SecurityTag) {
+	for i := 0; i < len(tagList); i++ {
+		changeTagStatus(&tagList[i], Inactive)
+	}
+}
+
+func main() {
+	tagList := []SecurityTag{{status: true}, {status: true}, {status: true}, {status: true}}
+	fmt.Println(tagList)
+	changeTagStatus(&tagList[0], Inactive)
+	fmt.Println(tagList)
+	checkout(tagList)
+	fmt.Println(tagList)
 }
