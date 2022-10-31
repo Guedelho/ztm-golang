@@ -18,8 +18,46 @@
 
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"io"
+	"os"
+	"strings"
+)
 
 func main() {
+	r := bufio.NewReader(os.Stdin)
+
+	nonBlank := 0
+	comands := 0
+
+	for {
+		input, inputErr := r.ReadString('\n')
+		n := strings.TrimSpace(input)
+		if n == "" {
+			continue
+		} else {
+			nonBlank += 1
+			comands += 1
+		}
+		if n == "Q" || n == "q" {
+			fmt.Println(nonBlank)
+			fmt.Println(comands)
+			os.Exit(0)
+		}
+		switch n {
+		case "hello":
+			fmt.Println("Hello there")
+		case "bye":
+			fmt.Println("bey there")
+		}
+		if inputErr == io.EOF {
+			break
+		}
+		if inputErr != nil {
+			fmt.Println("Error")
+		}
+	}
 
 }
