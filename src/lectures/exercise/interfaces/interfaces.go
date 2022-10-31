@@ -21,6 +21,60 @@ package main
 
 import "fmt"
 
-func main() {
+const (
+	SmallLift = iota
+	StandardLift
+	LargeLift
+)
 
+type Motorcycle string
+type Car string
+type Truck string
+
+type Lifter interface {
+	Lift() int
+}
+
+func (m Motorcycle) String() string {
+	return fmt.Sprintf("%v", string(m))
+}
+
+func (c Car) String() string {
+	return fmt.Sprintf("%v", string(c))
+}
+
+func (t Truck) String() string {
+	return fmt.Sprintf("%v", string(t))
+}
+
+func (m Motorcycle) Lift() int {
+	return SmallLift
+}
+
+func (c Car) Lift() int {
+	return StandardLift
+}
+
+func (t Truck) Lift() int {
+	return LargeLift
+}
+
+func liftVehicle(l Lifter) {
+	switch l.Lift() {
+	case SmallLift:
+		fmt.Printf("%v small\n", l)
+	case StandardLift:
+		fmt.Printf("%v standard\n", l)
+	case LargeLift:
+		fmt.Printf("%v large\n", l)
+	}
+}
+
+func main() {
+	moto := Motorcycle("Moto")
+	car := Car("Car")
+	truck := Truck("Truck")
+	liftVehicle(moto)
+	liftVehicle(car)
+	liftVehicle(truck)
 }
