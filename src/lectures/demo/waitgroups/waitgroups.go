@@ -23,8 +23,8 @@ func main() {
 			fmt.Println("waiting", duration)
 			time.Sleep(duration)
 		}()
-		fmt.Println("waiting for goroutines")
-		wg.Wait()
-		fmt.Println("done")
 	}
+	fmt.Println("waiting for goroutines")
+	wg.Wait()
+	fmt.Println("done")
 }
