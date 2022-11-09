@@ -61,6 +61,7 @@ func main() {
 			}
 		}
 	}
+
 	lineIterator(lines, lineFunc)
 	fmt.Println(letters)
 	fmt.Println(numbers)
